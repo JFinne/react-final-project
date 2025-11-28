@@ -1,0 +1,122 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* main content area placed below fixed navbar and centered vertically */
+main {
+  /* leave room for the fixed navbar */
+  min-height: calc(100vh - var(--nav-height, 64px));
+  display: flex;
+  align-items: center; /* vertical centering */
+  justify-content: center; /* horizontal centering */
+  padding: 1rem; /* internal padding */
+}
+
+/* Responsive grid for detailed profile view */
+.detailed-profile-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr 320px;
+  gap: 16px;
+  align-items: start;
+}
+
+/* Prevent the detailed profile grid from being vertically centered by the global `main` rule */
+.detailed-profile-grid {
+  align-self: start;
+}
+
+@media (max-width: 1100px) {
+  .detailed-profile-grid {
+    grid-template-columns: 200px 1fr;
+  }
+}
+
+@media (max-width: 740px) {
+  .detailed-profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Make the center column content stack vertically and allow gear tiles to wrap */
+.detailed-profile-grid .detailed-profile-main {
+  /* undo the global `main` row centering behavior by using column layout */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* make sure the center column doesn't inherit the page-level centering */
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 0;
+}
+
+/* Character frame: left column, center profile, right column, bottom weapons */
+.character-frame {
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  grid-template-rows: repeat(8, 40px) auto 56px; /* 8 rows for side slots, center auto for profile, bottom row for weapons */
+  gap: 8px;
+  align-items: center;
+  justify-items: center;
+}
+.character-frame .gear-col.left { grid-column: 1; grid-row: 1 / span 8; display:flex; flex-direction:column; gap:8px;}
+.character-frame .character-center { grid-column: 2; grid-row: 1 / span 9; display:flex; align-items:center; justify-content:center; padding:8px; }
+.character-frame .gear-col.right { grid-column: 3; grid-row: 1 / span 8; display:flex; flex-direction:column; gap:8px; }
+.character-frame .gear-bottom { grid-column: 2; grid-row: 10; display:flex; gap:12px; justify-content:center; margin-top:8px; }
+.gear-slot {
+  width: 72px;
+  height: 56px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.03);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 11px;
+  color: #cbd5e1;
+  border: 1px solid rgba(255,255,255,0.03);
+  overflow: hidden;
+}
+.gear-slot img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  display: block;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
