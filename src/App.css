@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -10,7 +10,7 @@ main {
   /* leave room for the fixed navbar */
   min-height: calc(100vh - var(--nav-height, 64px));
   display: flex;
-  align-items: center; /* vertical centering */
+  align-items: normal; /* vertical centering */
   justify-content: center; /* horizontal centering */
   padding: 1rem; /* internal padding */
 }

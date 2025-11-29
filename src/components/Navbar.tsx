@@ -12,6 +12,7 @@ export default function Navbar() {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/character-search">Character Search</Link></li>
+            <li><Link to="/live-leaderboards">Leaderboards</Link></li>
             <li><Link to="/favorites">Favorites ({favorites.length})</Link></li>
           </ul>
         </nav>
